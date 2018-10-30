@@ -1,3 +1,5 @@
+require 'csv'
+
 class Email
   def initialize(subject, headers)
     @subject = subject
@@ -23,6 +25,14 @@ class Email
     puts "Subject: #{@subject}"
   end
 
+  def add
+    @emails_values_arr = []
+    @headers.each {|_, value| @emails_values_arr << value}
+    @emails_values_arr << @subject
+    CSV.open("emails.csv", "wb") do |csv|
+       csv << @emails_values_arr
+    end
+  end
 
 end
 
@@ -31,5 +41,8 @@ end
 require './email'
 email = Email.new("Homework this week", {date: "24-10-2018", from: "Vova"})
 email.result
+
+email.add
+New record was added to emails.csv file!
 
 =end
