@@ -11,12 +11,16 @@ class Mailbox
     @name
   end
 
-  def info_keys
+  def emails
+    @emails
+  end
+
+  def box_keys
     @emails[0].emails_keys
   end
 
-  def info_values
-    @emails.map {|email| email.emails_values.join("</td>\n        <td>")}
+  def box_values
+    emails.map {|email| email.emails_values}
   end
 
   def result

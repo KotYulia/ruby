@@ -19,19 +19,27 @@ class MailboxHtmlFormatter
 </head>"
   end
 
+  def get_row(email)
+    td_row = ""
+    email.each do |value|
+      td_row = td_row + "<td>#{value}</td>\n"
+    end
+    td_row
+  end
+
   def body
+    tr_row = ""
+    @mailbox.box_values.each {|messages_arr| tr_row = tr_row + "<tr>#{get_row(messages_arr)}</tr>\n"}
 "<body>
   <h1>#{@mailbox.name}</h1>
   <table>
     <thead>
       <tr>
-        <th>#{@mailbox.info_keys.join("</th>\n        <th>")}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>#{@mailbox.info_values.join("</td>\n      </tr>\n      <tr>\n        <td>")}</td>
-      </tr>
+      #{tr_row}
     </tbody>
   </table>
 </body>"
