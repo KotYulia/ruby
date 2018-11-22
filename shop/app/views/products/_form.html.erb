@@ -1,0 +1,15 @@
+<%= form_for product do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.hidden_field :category_id, :value => params["id"] %>
+
+  <%= f.submit %>
+<% end %>

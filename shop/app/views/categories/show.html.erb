@@ -1,0 +1,27 @@
+<h1><%= @category.title %></h1>
+
+<%= image_tag(@category.image.url, alt: 'Image') if @category.image? %>
+<div>
+  <%= link_to 'Edit', edit_category_path(@category) %>
+  <%= link_to 'Delete', @category,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</div>
+
+<h2>Add new product</h2>
+<%= render :partial => 'products/form', :locals => {:product => Product.new} %>
+
+<h2>Products:</h2>
+
+<% @category.products.each do |product| %>
+  <p><%= product.title %></p>
+  <div>
+    <%= link_to 'Show', product %>
+    <%= link_to 'Edit', edit_product_path(product) %>
+    <%= link_to 'Delete', product,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', store_path(@category.store.id) %>

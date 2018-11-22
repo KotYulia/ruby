@@ -1,0 +1,17 @@
+<h1>Edit supplier</h1>
+
+<%= form_for @supplier do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', product_path(@supplier.product.id) %>

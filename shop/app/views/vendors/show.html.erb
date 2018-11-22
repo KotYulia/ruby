@@ -1,0 +1,11 @@
+<h1><%= @vendor.title %></h1>
+
+<%= image_tag(@vendor.image.url, alt: 'Image') if @vendor.image? %>
+<div>
+  <%= link_to 'Edit', edit_vendor_path(@vendor) %>
+  <%= link_to 'Delete', @vendor,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</div>
+
+<%= link_to 'Back', supplier_path(@vendor.supplier.id) %>

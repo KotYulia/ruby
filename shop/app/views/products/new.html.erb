@@ -1,0 +1,5 @@
+<h1>Add product</h1>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Back', category_path(@product.category.id) %>

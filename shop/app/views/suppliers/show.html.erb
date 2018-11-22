@@ -1,0 +1,27 @@
+<h1><%= @supplier.title %></h1>
+
+<%= image_tag(@supplier.image.url, alt: 'Image') if @supplier.image? %>
+<div>
+  <%= link_to 'Edit', edit_supplier_path(@supplier) %>
+  <%= link_to 'Delete', @supplier,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</div>
+
+<h2>Add new vendor</h2>
+<%= render :partial => 'vendors/form', :locals => {:vendor => Vendor.new} %>
+
+<h2>Vendors:</h2>
+
+<% @supplier.vendors.each do |vendor| %>
+  <p><%= vendor.title %></p>
+  <div>
+    <%= link_to 'Show', vendor %>
+    <%= link_to 'Edit', edit_vendor_path(vendor) %>
+    <%= link_to 'Delete', vendor,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', product_path(@supplier.product.id) %>
