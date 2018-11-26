@@ -1,0 +1,30 @@
+<h1><%= @country.title %></h1>
+
+<%= image_tag(@country.image.url, alt: 'Image') if @country.image? %>
+
+<div>
+  <%= link_to 'Edit', edit_country_path(@country) %>
+  <%= link_to 'Delete', country_path(@country),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</div>
+
+<h2>Add new city</h2>
+<%= render :partial => 'cities/form', :locals => {:city => @country.cities.build} %>
+
+<h2>Cities:</h2>
+
+<% @country.cities.each do |city| %>
+  <p><%= city.title %></p>
+  <p><%= city.id %></p>
+  <div>
+
+    <%= link_to 'Show', [@country, city] %>
+    <%= link_to 'Edit', edit_country_city_path(@country, city) %>
+    <%= link_to 'Delete', [@country, city],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+
+<p><%= link_to 'All countries', countries_path %></p>

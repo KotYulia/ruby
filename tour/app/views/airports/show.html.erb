@@ -1,0 +1,14 @@
+<h1><%= @airport.title %></h1>
+
+<%= image_tag(@airport.image.url, alt: 'Image') if @airport.image? %>
+
+<div>
+  <%= link_to 'Edit', edit_city_airport_path(@airport.city, @airport) %>
+  <%= link_to 'Delete', city_airport_path(@airport.city, @airport),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</div>
+
+<%= country_city_path(@city.country) %><br>
+
+<p><%= link_to 'Back', country_city_path(@airport) %></p>

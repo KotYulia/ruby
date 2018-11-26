@@ -1,0 +1,17 @@
+<h1>Edit city</h1>
+
+<%= form_with(model: [ @country, @country.cities.build ], local: true) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', country_path(@city.country.id) %>

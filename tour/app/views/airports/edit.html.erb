@@ -1,0 +1,17 @@
+<h1>Edit airport</h1>
+
+<%= form_with(model: [ @city, @city.airports.build ], local: true) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', country_city_path(@airport.city.id) %>

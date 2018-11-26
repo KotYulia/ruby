@@ -1,0 +1,10 @@
+<li>
+  <h2><%= country.title %></h2>
+  <div>
+    <%= link_to 'Show', country_path(country) %>
+    <%= link_to 'Edit', edit_country_path(country) %>
+    <%= link_to 'Delete', country_path(country),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </div>
+</li>

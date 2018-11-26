@@ -1,0 +1,5 @@
+<h1>Add airport</h1>
+
+<%= render 'form', airport: @airport %>
+
+<%= link_to 'Back', country_city_path(@airport.city.id) %>
