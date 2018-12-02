@@ -14,7 +14,7 @@
 
 <h2>Cities:</h2>
 
-<% @country.cities.each do |city| %>
+<% @country.cities.reload.each do |city| %>
   <p><%= city.title %></p>
   <p><%= city.id %></p>
   <div>

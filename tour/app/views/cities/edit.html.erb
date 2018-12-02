@@ -1,6 +1,6 @@
 <h1>Edit city</h1>
 
-<%= form_with(model: [ @country, @country.cities.build ], local: true) do |f| %>
+<%= form_for [ :country, @city ] do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>

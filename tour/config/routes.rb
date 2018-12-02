@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :countries do
-    resources :cities
+    resources :cities do
+      resources :airports
+    end
   end
 
   root 'countries#index'

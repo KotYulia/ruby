@@ -1,6 +1,6 @@
 <h1>Edit airport</h1>
 
-<%= form_with(model: [ @city, @city.airports.build ], local: true) do |f| %>
+<%= form_with(model: [ :city, @airport ], local: true) do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>

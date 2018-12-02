@@ -7,7 +7,7 @@ class CitiesController < ApplicationController
 =end
 
   def new
-    @city = City.new(country: @country)
+    @city = City.new
   end
 
   def create
