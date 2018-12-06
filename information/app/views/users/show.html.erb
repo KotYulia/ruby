@@ -1,0 +1,33 @@
+<div class="user-content">
+  <% if current_user&.admin? || current_user.id == @user.id %>
+    <div class="user-info">
+      <div><%= image_tag(@user.avatar.url, alt: 'Avatar') if @user.avatar? %></div>
+      <h1><%= @user.full_name %></h1>
+      <p><%= @user.city %></p>
+      <div class="crud-links"><%= link_to 'Edit', edit_user_path(current_user) %></div>
+
+      <h2>Tasks list:</h2>
+      <ul>
+        <% @user.tasks.each do |task| %>
+          <li>
+            <p><%= task.title %></p>
+            <div class="crud-links">
+              <%= link_to 'Show', task %> |
+              <%= link_to 'Edit', edit_task_path(task) %> |
+              <%= link_to 'Delete', task,
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="create-task-block">
+      <h2>Add new task</h2>
+      <%= render :partial => 'tasks/form', :locals => {:task => Task.new} %>
+    </div>
+  <% else
+       controller.redirect_to '/login'%>
+  <% end %>
+</div>

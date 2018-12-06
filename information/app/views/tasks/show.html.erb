@@ -1,0 +1,14 @@
+<% if current_user&.admin? || current_user.id == @task.user.id %>
+  <h1><%= @task.title %></h1>
+  <p><%= @task.text %></p>
+
+  <div>
+    <%= link_to 'Edit', edit_task_path(@task) %>
+    <%= link_to 'Delete', @task,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  </div>
+  <%= link_to 'Back', user_path(@task.user.id) %>
+<% else
+     controller.redirect_to '/login'%>
+<% end %>
