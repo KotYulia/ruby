@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to user_path(@task.user.id)
+    redirect_to user_path(@task.user.id), notice: 'task was successfully destroyed.'
   end
 
   private
